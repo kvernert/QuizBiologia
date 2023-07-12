@@ -2,7 +2,7 @@ const questoes = [
     {
       id: 1,
       pergunta: '<p> Qual é o nome da organela celular responsável pela produção de ATP?</p>',
-      img: '',
+      img: 'https://saude.abril.com.br/wp-content/uploads/2022/04/mitocondria.png?w=680&h=453&crop=1',
       respostas: [
         {
           id: 1.1,
@@ -29,7 +29,7 @@ const questoes = [
     {
       id: 2,
       pergunta: '<p>O que é mitose?</p>',
-      img: '',
+      img: 'https://storage.googleapis.com/novo-blog-wordpress/2018/12/mitose-imagem-destaque-768x320.jpg',
       respostas: [
         {
           id: 2.1,
@@ -56,7 +56,7 @@ const questoes = [
     {
       id: 3,
       pergunta: '<p>Qual é a função dos cromossomos?</p>',
-      img: '',
+      img: 'https://www.estudopratico.com.br/wp-content/uploads/2013/12/cromossomos.jpg',
       respostas: [
         {
           id: 3.1,
@@ -83,7 +83,7 @@ const questoes = [
     {
       id: 4,
       pergunta: '<p> Qual é a principal função dos glóbulos vermelhos no sangue?</p>',
-      img: '',
+      img: 'https://www.sofis.com.br/wp-content/uploads/2016/05/hemacia-1024x640.png',
       respostas: [
         {
           id: 4.1,
@@ -110,7 +110,7 @@ const questoes = [
     {
       id: 5,
       pergunta: '<p>Qual a função dos leucócitos no sangue? </p>',
-      img: '',
+      img: 'http://sauderiomafra.com.br/wp-content/uploads/2023/04/Leucopenia-sintomas-e-causas-768x432.jpg',
       respostas: [
         {
           id: 5.1,
@@ -137,7 +137,7 @@ const questoes = [
     {
       id: 6,
       pergunta: '<p>Qual das seguintes alternativas melhor descreve a função da proteína prion e como sua conformação anormal pode levar a doenças neurodegenerativas em mamíferos? </p>',
-      img: '',
+      img: 'https://static.mundoeducacao.uol.com.br/mundoeducacao/2023/02/ilustracao-de-duas-proteinas-cerebrais-uma-normal-e-uma-com-menos-dobras-essa-versao-anormal-e-denominada-prion.jpg',
       respostas: [
         {
           id: 6.1,
@@ -164,7 +164,7 @@ const questoes = [
     {
       id: 7,
       pergunta: '<p> Além de sua função principal de modificação, classificação e transporte de proteínas e lipídios, o complexo de Golgi também tem outras funções importantes na célula. Qual das seguintes afirmações sobre as funções do complexo de Golgi é verdadeira? </p>',
-      img: '',
+      img: 'https://static.mundoeducacao.uol.com.br/mundoeducacao/2019/10/complexo-golgiense.jpg',
       respostas: [
         {
           id: 7.1,
@@ -191,7 +191,7 @@ const questoes = [
     {
       id: 8,
       pergunta: '<p>Caso tivesse a capacidade de identificar uma única hemácia do sangue de uma pessoa enquanto ela circula por um capilar sanguíneo no pé, seguisse seu caminho pelo corpo e observasse sua passagem por uma série de locais, a sequência seria como: </p>',
-      img: '',
+      img: 'https://static.biologianet.com/conteudo/images/as-hemacias-tambem-sao-chamadas-globulos-vermelhos-540f557188d27.jpg',
       respostas: [
         {
           id: 8.1,
@@ -218,7 +218,7 @@ const questoes = [
     {
       id: 9,
       pergunta: '<p>Em relação à AIDS, temos as afirmações seguintes: </p> <p> I. A doença chamada AIDS é ocasionada por um vírus; </p> <p> II. Sendo que a principal forma de contágio é por meio da transfusão de sangue contaminado, contato sexual com pessoas portadoras do vírus e compartilhamento de agulhas por usuários de drogas injetáveis; </p> <p> III. A convivência com um portador da doença, seja em casa, no trabalho, na escola ou na rua, não representa risco de transmissão da doença, exceto em circunstâncias específicas; </p> <p> IV. O vírus da AIDS ataca o sistema imunológico, prejudicando a capacidade do organismo de combater outras infecções e doenças. </p> <p> Considerando os conhecimentos atuais, assinale a alternativa:</p>',
-      img: '',
+      img: 'https://www.telavita.com.br/blog/wp-content/uploads/2019/02/diferenca-de-hiv-e-aids.jpg',
       respostas: [
         {
           id: 9.1,
@@ -245,7 +245,7 @@ const questoes = [
     {
       id: 10,
       pergunta: '<p>A reprodução assexuada em animais pode ocorrer por diferentes processos. Na maioria dos cnidários, por exemplo, ocorre a brotamento, em que novos indivíduos são formados a partir do corpo do adulto. Em alguns cnidários, como as anêmonas-do-mar, a reprodução assexuada também pode ocorrer por cissiparidade, em que o corpo do animal é dividido em duas partes, cada uma dando origem a um novo indivíduo. Esses novos indivíduos são geneticamente: </p>',
-      img: '',
+      img: 'https://static.escolakids.uol.com.br/image/reproducao1.jpg',
       respostas: [
         {
           id: 10.1,
@@ -272,7 +272,7 @@ const questoes = [
     {
       id: 11,
       pergunta: '<p> A distrofia muscular Duchenne (DMD) é uma doença causada por uma mutação em um gene localizado no cromossomo X. Pesquisadores estudaram uma família na qual gêmeas monozigóticas eram portadoras de um alelo mutante recessivo para esse gene (heterozigóticas). O interessante é que uma das gêmeas apresentava o fenótipo relacionado ao alelo mutante, isto é, DMD, enquanto a sua irmã apresentava fenótipo normal.</p>',
-      img: '',
+      img: 'https://movimentoduchenne.com.br/wp-content/uploads/2020/08/Ilustraciones_DDM_Ok-04-3.png',
       respostas: [
         {
           id: 11.1,
@@ -299,7 +299,7 @@ const questoes = [
     {
       id: 12,
       pergunta: '<p>A talidomida é um sedativo leve e foi muito utilizado no tratamento de náuseas, comuns no inı́cio da gravidez. Quando foi lançada, era considerada segura para o uso de grávidas, sendo administrada como uma mistura racêmica composta pelos seus dois enantiômeros (R e S). Entretanto, não se sabia, na época, que o enantiômero S leva à malformação congênita, afetando principalmente o desenvolvimento normal dos braços e pernas do bebê. </p> <p>Essa malformação congênita ocorre porque esses enantiômeros </p>',
-      img: '',
+      img: 'https://www.blogs.unicamp.br/quimikinha/wp-content/uploads/sites/86/2020/09/xxxxxxxx-1024x550.png',
       respostas: [
         {
           id: 12.1,
@@ -326,7 +326,7 @@ const questoes = [
     {
       id: 13,
       pergunta: '<p>Os vegetais biossintetizam determinadas substâncias (por exemplo, alcaloides e flavonoides), cuja estrutura quı́mica e concentração variam num mesmo organismo em diferentes épocas do ano e estágios de desenvolvimento. Muitas dessas substâncias são produzidas para a adaptação do organismo às variações ambientais (radiação UV, temperatura, parasitas, herbı́voros, estı́mulo a polinizadores etc.) ou fisiológicas (crescimento, envelhecimento etc.). </p> <p>As variações qualitativa e quantitativa na produção dessas substâncias durante um ano são possı́veis porque o material genético do indivı́duo</p>',
-      img: '',
+      img: 'https://cdn.pixabay.com/photo/2014/04/07/16/51/leaves-318743_1280.jpg',
       respostas: [
         {
           id: 13.1,
@@ -353,7 +353,7 @@ const questoes = [
     {
       id: 14,
       pergunta: '<p>A polinização, que viabiliza o transporte do grão de pólen de uma planta até o estigma de outra, pode ser realizada biótica ou abioticamente. Nos processos abióticos, as plantas dependem de fatores como o vento e a água.</p> <p>A estratégia evolutiva que resulta em polinização mais eficiente quando esta depende do vento é o(a): </p>',
-      img: '',
+      img: 'https://static.escolakids.uol.com.br/2022/05/ilustracao-polinizacao-abelha.jpg',
       respostas: [
         {
           id: 14.1,
@@ -380,7 +380,7 @@ const questoes = [
     {
       id: 15,
       pergunta: '<p>Um estudante relatou que o mapeamento do DNA da cevada foi quase todo concluído e seu código genético foi desvendado. Chamou a atenção para o número de genes que compõem esse código genético e que a semente da cevada, apesar de pequena, possui um genoma mais complexo que o humano, sendo boa parte desse código constituída de sequências repetidas. Nesse contexto, o conceito de código genético está abordado de forma equivocada.</p> <p>Cientificamente esse conceito é definido como:</p>',
-      img: '',
+      img: 'https://uploads.metropoles.com/wp-content/uploads/2019/01/11162006/134.jpeg',
       respostas: [
         {
           id: 15.1,
