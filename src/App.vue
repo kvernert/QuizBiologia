@@ -1,46 +1,44 @@
 <script setup>
-import { ref, computed } from 'vue'
-import {useToast} from 'vue-toast-notification';
+import { ref, computed} from 'vue';
+import { useToast } from 'vue-toast-notification';
 
-import { getQuestaoPorId } from '@/_data/questoes'
-import { getDicaOfId } from '@/_data/caderno'
+import { getQuestaoPorId } from '@/_data/questoes';
+import { getDicaOfId } from '@/_data/caderno';
+
 
 const $toast = useToast();
 
-const duration = 100
+const duration = 1000
 const currentId = ref(1)
 const questaoAtual = computed(() => getQuestaoPorId(currentId.value))
-const dicaAtual = computed (() => getDicaOfId(currentId.value))
+const dicaAtual = computed(() => getDicaOfId(currentId.value))
 
 const pontos = ref(0)
+const respostaSelecionada = ref(false);
+
 function verificaQuestao(alternativa) {
-  if (alternativa.correta) {
-    pontos.value++
-    $toast.success('Alternativa Correta.', {
-      position: 'top',
-      duration
-    })
-    // instance.dismiss();
-    // $toast.clear();
-  } else {
-    $toast.error('Alternativa Inorreta.', {
-      position: 'top',
-      duration
-    })
+  if (!respostaSelecionada.value) {
+    respostaSelecionada.value = true;
+
+    if (alternativa.correta) {
+      pontos.value++;
+      $toast.success('Alternativa Correta.', {
+        position: 'top',
+        duration,
+      });
+    } else {
+      $toast.error('Alternativa Incorreta.', {
+        position: 'top',
+        duration,
+      });
+    }
+
+    setTimeout(() => {
+      respostaSelecionada.value = false;
+      currentId.value++;
+    }, duration);
   }
-  setTimeout(() => {
-    currentId.value++
-
-  }, duration)
 }
-
-
-// this.$toast.open({
-//     message: 'Something went wrong!',
-//     type: 'error',
-//     // all of other options may go here
-// });
-
 </script>
 
 <template>
@@ -58,6 +56,7 @@ function verificaQuestao(alternativa) {
     </header>
 
     <main>
+      
       <div class="container">
         <div class="Questao">
           <div class="pergunta">
@@ -70,7 +69,8 @@ function verificaQuestao(alternativa) {
         </div>
 
         <div class="alternativas">
-          <button v-for="(alt, i) in questaoAtual.respostas" :key="i" class="botaoUm" type="button" @click="verificaQuestao(alt)">
+          <button v-for="(alt, i) in questaoAtual.respostas" :key="i" class="botaoUm" type="button"
+            @click="verificaQuestao(alt)">
             {{ alt.texto }}
           </button>
         </div>
@@ -100,6 +100,14 @@ function verificaQuestao(alternativa) {
       </div>
     </div>
   </div>
+  <transition name="fade">
+      <div v-if="quizConcluido" class="pontuacao-final">
+        <h3>Sua pontuação:</h3>
+        <p>{{ pontos }} de {{ totalQuestoes }}</p>
+        <p class="mensagem-divertida">{{ mensagemDivertida }}</p>
+        <button @click="reiniciarQuiz">Reiniciar</button>
+      </div>
+    </transition>
 </template>
 
 <style scoped>
@@ -140,12 +148,11 @@ function verificaQuestao(alternativa) {
   margin-right: 20px;
 }
 
-/* Estilos do corpo principal */
 main {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 80px 20px;
+  padding: 80px 200px;
 
 }
 
@@ -156,7 +163,6 @@ main {
   text-align: center;
   width: 100%;
 }
-
 .Questao {
   margin-bottom: 40px;
 }
@@ -169,7 +175,7 @@ main {
   width: 100%;
   font-family: 'Comic Neue', cursive;
   font-size: 23px;
-  text-align: justify;
+  text-align: center;
   background-color: white;
 }
 
@@ -178,7 +184,7 @@ main {
 }
 
 img {
-  max-width: 100%;
+  max-width: 60%;
   height: auto;
 }
 
@@ -194,8 +200,8 @@ img {
   border: none;
   color: white;
   background: #00a86b;
-  width: 400px;
-  height: 100px;
+  width: 500px;
+  height: 180px;
   border-radius: 10px;
   font-size: 18px;
   font-weight: bold;
@@ -249,7 +255,5 @@ img {
 .modal-footer {
   justify-content: flex-end;
 }
-
-/* Restante do código CSS */
 
 </style>
