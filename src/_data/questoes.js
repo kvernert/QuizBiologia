@@ -98,7 +98,7 @@ const questoes = [
         {
           id: 4.3,
           texto: 'Combater infecções e doenças',
-          correta: true
+          correta: false
         },
         {
           id: 4.4,
@@ -120,7 +120,7 @@ const questoes = [
         {
           id: 5.2,
           texto: 'Transportar oxigênio para as células do corpo',
-          correta: true
+          correta: false
         },
         {
           id: 5.3,
@@ -152,7 +152,7 @@ const questoes = [
         {
           id: 6.3,
           texto: 'Desempenha um papel importante no sistema imunológico, reconhecendo e destruindo invasores estrangeiros, e sua conformação anormal pode levar à ativação de células imunológicas e inflamação crônica.',
-          correta: true
+          correta: false
         },
         {
           id: 6.4,

@@ -1,44 +1,60 @@
 <script setup>
-import { ref, computed} from 'vue';
-import { useToast } from 'vue-toast-notification';
+import { ref, computed } from 'vue'
+import { useToast } from 'vue-toast-notification'
 
-import { getQuestaoPorId } from '@/_data/questoes';
-import { getDicaOfId } from '@/_data/caderno';
+import { getQuestaoPorId } from '@/_data/questoes'
+import { getDicaOfId } from '@/_data/caderno'
 
+const $toast = useToast()
 
-const $toast = useToast();
-
-const duration = 1000
+const duration = 2000
 const currentId = ref(1)
 const questaoAtual = computed(() => getQuestaoPorId(currentId.value))
 const dicaAtual = computed(() => getDicaOfId(currentId.value))
-
+const resText = ref('')
 const pontos = ref(0)
-const respostaSelecionada = ref(false);
+const correct = ref(false)
+const answered = ref(false)
+
+function resetQuiz() {
+  correct.value = false
+  answered.value = false
+}
 
 function verificaQuestao(alternativa) {
-  if (!respostaSelecionada.value) {
-    respostaSelecionada.value = true;
-
-    if (alternativa.correta) {
-      pontos.value++;
-      $toast.success('Alternativa Correta.', {
-        position: 'top',
-        duration,
-      });
-    } else {
-      $toast.error('Alternativa Incorreta.', {
-        position: 'top',
-        duration,
-      });
-    }
-
-    setTimeout(() => {
-      respostaSelecionada.value = false;
-      currentId.value++;
-    }, duration);
-  }
+  if (answered.value) return
+  if (alternativa.correta) {
+    correct.value = true
+    pontos.value++
+    $toast.success('Correta!', {
+      position: 'top',
+      duration,
+    })
+  } else {
+    correct.value = false
+    $toast.error('Incorreta!', {
+      position: 'top',
+      duration,
+    })
 }
+  answered.value = true
+
+  setTimeout(() => {
+    resetQuiz()
+  }, duration)
+}
+
+const testOK = computed(() => {
+  return function (correta) {
+    if (answered.value && correta) {
+      return 'answered-correct'
+    } else if (answered.value && !correta) {
+      return 'answered-incorrect'
+    } else {
+      return ''
+    }
+  }
+})
 </script>
 
 <template>
@@ -56,7 +72,6 @@ function verificaQuestao(alternativa) {
     </header>
 
     <main>
-      
       <div class="container">
         <div class="Questao">
           <div class="pergunta">
@@ -64,31 +79,55 @@ function verificaQuestao(alternativa) {
           </div>
 
           <div class="imagem">
-            <img :src="questaoAtual.img" alt="Imagem da pergunta">
+            <img :src="questaoAtual.img" alt="Imagem da pergunta" />
           </div>
         </div>
 
         <div class="alternativas">
-          <button v-for="(alt, i) in questaoAtual.respostas" :key="i" class="botaoUm" type="button"
-            @click="verificaQuestao(alt)">
-            {{ alt.texto }}
-          </button>
+          <button
+          v-for="(alt, i) in questaoAtual.respostas"
+          :key="i"
+          class="botaoUm"
+          :class="testOK(alt.correta)"
+          type="button"
+          @click="verificaQuestao(alt)"
+        >
+          {{ alt.texto }}
+        </button>
         </div>
-      </div>
+        </div>
     </main>
 
     <footer class="footerPrincipal">
-      <button type="button" class="btn buttonModal " data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <button @click="currentId++"  type="button"
+        class="btn buttonModal">Próximo</button>
+      <button
+        type="button"
+        class="btn buttonModal"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
         Dica
       </button>
     </footer>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="exampleModalLabel">Caderno</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
           </div>
           <div class="modal-body">
             <span v-html="dicaAtual.dica"></span>
@@ -100,14 +139,6 @@ function verificaQuestao(alternativa) {
       </div>
     </div>
   </div>
-  <transition name="fade">
-      <div v-if="quizConcluido" class="pontuacao-final">
-        <h3>Sua pontuação:</h3>
-        <p>{{ pontos }} de {{ totalQuestoes }}</p>
-        <p class="mensagem-divertida">{{ mensagemDivertida }}</p>
-        <button @click="reiniciarQuiz">Reiniciar</button>
-      </div>
-    </transition>
 </template>
 
 <style scoped>
@@ -144,6 +175,12 @@ function verificaQuestao(alternativa) {
   margin: 0;
 }
 
+.botaoUm.answered-correct {
+  background-color: darkgreen !important;
+}
+.botaoUm.answered-incorrect {
+  background-color: darkred !important;
+}
 .pontos {
   margin-right: 20px;
 }
@@ -153,7 +190,6 @@ main {
   justify-content: center;
   align-items: center;
   padding: 80px 200px;
-
 }
 
 .container {
@@ -255,5 +291,4 @@ img {
 .modal-footer {
   justify-content: flex-end;
 }
-
 </style>
